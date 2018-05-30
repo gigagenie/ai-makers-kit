@@ -6,7 +6,7 @@ Raspberry Pi에서 동작하며 Node.js, Python 등 프로그래밍 언어별로
 ### Directory
 
     README.md   : this file
-    lib/        : Raspberry Pi GiGA Genie KWS shared library
+    lib/        : GiGA Genie KWS shared library for Raspberry Pi
     data/       : KWS model data, Sound data, etc.
     nodejs/     : Node.js support
     python/     : Python support
