@@ -5,14 +5,14 @@ Raspberry Pi에서 동작하며 Node.js, Python, Java 등 프로그래밍 언어
 
 ### Directory
 
-    `
+    ```
     README.md   : this file
     lib/        : Raspberry Pi용 GiGA Genie KWS shared library
     data/       : KWS model data, Sound data, etc.
     nodejs/     : Node.js support
     python/     : Python support
     
-    `
+    ```
     
 ### License
 
