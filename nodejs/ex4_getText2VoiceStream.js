@@ -9,7 +9,7 @@ const aikit=require('./aimakerskitutil');
 const client_id='';
 const client_key='';
 const client_secret='';
-const json_path='./client.json';
+const json_path='';
 const cert_path='../data/ca-bundle.pem';
 const proto_path='../data/gigagenieRPC.proto';
 
