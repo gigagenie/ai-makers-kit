@@ -14,7 +14,7 @@ function initMic(){
         })
 };
 process.env.LD_LIBRARY_PATH='./kwslib';
-let res=ktkws.initialize('./kwslib/kwsmodel.pack');
+let res=ktkws.initialize('../data/kwsmodel.pack');
 console.log('Initialize:'+res);
 res=ktkws.startKws(kwsflag);
 console.log('startKws:'+res);
@@ -23,7 +23,7 @@ mic.on('data',(data)=>{
 	result=ktkws.pushBuffer(data);
 	if(result===1) {
 		console.log("KWS Detected");
-		player.openFile('./sample_sound.wav');
+		player.openFile('../data/sample_sound.wav');
 	}
 });
 console.log('say :'+kwstext[kwsflag]);
