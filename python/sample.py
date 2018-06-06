@@ -13,8 +13,6 @@ CLIENT_ID = 'YOUR_CLIENT_ID'
 CLIENT_KEY = 'YOUR_CLIENT_KEY'
 CLIENT_SECRET = 'YOUR_CLIENT_SECRET'
 
-## SAMPLE ##
-
 def sample():
     
     gkit.set_clientkey(CLIENT_ID, CLIENT_KEY, CLIENT_SECRET)
@@ -27,8 +25,7 @@ def sample():
             stt_text = gkit.getVoice2Text()
             print (stt_text)
             if stt_text != '':
-                tts_url = gkit.getText2VoiceUrl(stt_text)
-                print (tts_url)
+                gkit.tts_play(stt_text)
 
 def main():
 

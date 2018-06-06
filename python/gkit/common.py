@@ -19,6 +19,7 @@ import pyaudio
 import audioop
 from six.moves import queue
 import wave
+import os
 
 import ktkws
 
@@ -146,23 +147,22 @@ def print_rms(rms):
     
     print (out)
 
-def play_file(fname):
+def play_wav(fname, chunk=CHUNK):
     # create an audio object
     wf = wave.open(fname, 'rb')
     p = pyaudio.PyAudio()
-    chunk = 1024
 
     # open stream based on the wave object which has been input.
     stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
-                    channels=wf.getnchannels(),
-                    rate=wf.getframerate(),
-                    output=True)
+                     channels=wf.getnchannels(),
+                     rate=wf.getframerate(),
+                     output=True)
 
     # read data (based on the chunk size)
     data = wf.readframes(chunk)
 
     # play stream (looping from beginning of file to the end)
-    while data:
+    while len(data) > 0:
         # writing to the stream is what *actually* plays the sound.
         stream.write(data)
         data = wf.readframes(chunk)
@@ -232,7 +232,7 @@ def kws_detect():
             #print('audio rms = %d' % (rms))
 
             if (rc == 1):
-                play_file(KWSSOUNDFILE)
+                play_wav(KWSSOUNDFILE)
                 return 200
 
 # STT
@@ -307,3 +307,25 @@ def getText2VoiceUrl(text):
     else:
         print ("Fail")
         return None
+
+def getText2VoiceStream(text, fname):
+
+    stub = grpc_conn()
+
+    message = gigagenieRPC_pb2.reqText()
+    message.lang=0
+    message.mode=0
+    message.text=text
+    writeFile=open(fname,'wb')
+    for response in stub.getText2VoiceStream(message):
+        #if response.HasField("resOptions"):
+            #print ("ResVoiceResult: %d" %(response.resOptions.resultCd))
+        if response.HasField("audioContent"):
+            #print ("Audio Stream")
+            writeFile.write(response.audioContent)
+    writeFile.close()
+
+def tts_play(text):
+    fname = './tmp.wav'
+    getText2VoiceStream(text, fname)
+    os.system('mplayer %s' % (fname))
