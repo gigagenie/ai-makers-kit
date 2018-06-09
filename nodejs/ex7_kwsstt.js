@@ -11,7 +11,7 @@ const json_path='';
 const cert_path='../data/ca-bundle.pem';
 const proto_path='../data/gigagenieRPC.proto';
 
-const kwstext=['기가지니','지니야','친구야'];
+const kwstext=['기가지니','지니야','친구야','자기야'];
 const kwsflag=parseInt(process.argv[2]);
 let pcm=null;
 function initMic(){
@@ -36,7 +36,7 @@ mic.on('data',(data)=>{
 		result=ktkws.pushBuffer(data);
 		if(result===1) {
 			console.log("KWS Detected");
-			player.openFile('./sample_sound.wav');
+			player.openFile('../data/sample_sound.wav');
 			setTimeout(startStt,1000);
 			startStt();
 		}

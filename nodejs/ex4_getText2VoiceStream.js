@@ -14,7 +14,7 @@ const cert_path='../data/ca-bundle.pem';
 const proto_path='../data/gigagenieRPC.proto';
 
 //aikit.initialize(client_id,client_key,client_secret,cert_path,proto_path);
-aikit.initializeJson('./client.json',cert_path,proto_path);
+aikit.initializeJson(json_path,cert_path,proto_path);
 kttts=aikit.getText2VoiceStream({text:'안녕하세요. 반갑습니다.',lang:0,mode:0});
 kttts.on('error',(error)=>{
                 console.log('Error:'+error);
@@ -28,4 +28,7 @@ kttts.on('data',(data)=>{
 kttts.on('end',()=>{
         console.log('pcm end');
 });
-
+function finish(){
+	console.log('tts played');
+};
+setTimeout(finish,5000);

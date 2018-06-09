@@ -2,7 +2,7 @@ const record=require('node-record-lpcm16');
 const mplayer=require('mplayer');
 const ktkws=require('./ktkws');
 const player=new mplayer();
-const kwstext=['기가지니','지니야','친구야'];
+const kwstext=['기가지니','지니야','친구야','자기야'];
 const kwsflag=parseInt(process.argv[2]);
 let pcm=null;
 function initMic(){
@@ -13,7 +13,6 @@ function initMic(){
                 recordProgram: 'arecord',
         })
 };
-process.env.LD_LIBRARY_PATH='./kwslib';
 let res=ktkws.initialize('../data/kwsmodel.pack');
 console.log('Initialize:'+res);
 res=ktkws.startKws(kwsflag);
