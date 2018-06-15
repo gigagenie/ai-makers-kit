@@ -45,6 +45,6 @@ AI Makers Kit 이용을 위해서 개발자 등록과 client key를 먼저 발�
     * getVoice2Text         : 음성인식(Speech-to-text)
     * getText2VoiceUrl      : 음성합성(Text-to-speech) wave file url로 전달
     * getText2VoiceStream   : 음성합성(TTS)을 stream data로 전달
-    * queryByText           : Text에 대한 대화해석 결과(기가지니 Dialog Kit 참조)
-    * queryByVoice          : STT한 결과에 대한 대화해석 결과(기가지니 Dialog Kit 참조)
+    * queryByText           : Text에 대한 대화해석 결과([기가지니 Dialog Kit](https://github.com/gigagenieDmt/DialogKit-deploymentGuide/wiki) 참조)
+    * queryByVoice          : STT한 결과에 대한 대화해석 결과([기가지니 Dialog Kit](https://github.com/gigagenieDmt/DialogKit-deploymentGuide/wiki) 참조)
  
