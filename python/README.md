@@ -30,15 +30,13 @@ AI Makers Kit 이용을 위해서 개발자 등록과 client key를 먼저 발�
 
 음성 호출(Keyword Spotting) 이용
 
- ₩₩₩
- import ktkws
- 
- ktkws.init(KWSMODELDATA)   # ../data/kwsmodel.pack 이용
- ktkws.start()
- ktkws.set_keyword(KWSID)   # 0: 기가지니, 1: 지니야, 2: 친구야, 3: 자기야
- ktkws.detect(AUDIOSTERAM)  # AUDIOSTREAM: PCM 16000Hz, mono, LINEAR16 LE
- # ktkws.detect() return value가 1로 detect 여부 판단
- ₩₩₩
+    import ktkws
+    
+    ktkws.init(KWSMODELDATA)   # ../data/kwsmodel.pack 이용
+    ktkws.start()
+    ktkws.set_keyword(KWSID)   # 0: 기가지니, 1: 지니야, 2: 친구야, 3: 자기야
+    ktkws.detect(AUDIOSTERAM)  # AUDIOSTREAM: PCM 16000Hz, mono, LINEAR16 LE
+    # ktkws.detect() return value가 1로 detect 여부 판단
  
  음성인식/대화/음성합성 API 이용(ex2~6 example code 참조)
  
