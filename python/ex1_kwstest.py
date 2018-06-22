@@ -1,13 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""The Python implementation of GiGA Genie gRPC client"""
+"""Example 1: GiGA Genie Keyword Spotting"""
 
 from __future__ import print_function
 
-### COMMON : Client Credentials ###
-
-### KWS
 import pyaudio
 import audioop
 from six.moves import queue
@@ -126,8 +123,6 @@ def detect():
         audio_generator = stream.generator()
 
         for content in audio_generator:
-            #import binascii
-            #print ("INBYTE: %s" % (binascii.hexlify(bytearray(content))))
 
             rc = ktkws.detect(content)
             rms = audioop.rms(content,2)
@@ -146,7 +141,6 @@ def test():
     rc = detect()
     print ('detect rc = %d' % (rc))
     ktkws.stop()
-    ktkws.reset()
 
 def main():
 

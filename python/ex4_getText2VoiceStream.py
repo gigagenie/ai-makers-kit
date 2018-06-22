@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""The Python implementation of GiGA Genie gRPC client"""
+"""Example 4: TTS - getText2VoiceStream"""
 
 from __future__ import print_function
 
@@ -45,6 +45,7 @@ def getCredentials():
     return grpc.composite_channel_credentials(sslCred, authCred)
 
 ### END OF COMMON ###
+
 # TTS : getText2VoiceStream
 def getText2VoiceStream(inText,inFileName):
 
