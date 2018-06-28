@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""The Python implementation of GiGA Genie gRPC client"""
+"""Example 5: Dialog - queryByText"""
 
 from __future__ import print_function
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""The Python implementation of GiGA Genie gRPC client"""
+"""Example 6: STT + Dialog - queryByVoice"""
 
 from __future__ import print_function
 
@@ -57,7 +57,7 @@ from six.moves import queue
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 16000
-CHUNK = 1024
+CHUNK = 512
 
 # MicrophoneStream - original code in https://goo.gl/7Xy3TT
 class MicrophoneStream(object):
@@ -138,7 +138,7 @@ def generate_request():
         messageReq.reqOptions.deviceId="aklsjdnalksd"
         yield messageReq
         for content in audio_generator:
-            message = gigagenieRPC_pb2.reqVoice()
+            message = gigagenieRPC_pb2.reqQueryVoice()
             message.audioContent = content
             yield message
             rms = audioop.rms(content,2)
@@ -154,20 +154,16 @@ def queryByVoice():
     print ("resultCd: %d" % (response.resultCd))
     if response.resultCd == 200:
         print ("uword: %s" % (response.uword))
-        #dssAction = response.action
         for a in response.action:
             print (a.mesg)
             print (a.actType)
 
-        #return response.url
     else:
         print ("Fail: %d" % (response.resultCd))
-        #return None	
     return resultText
 
 def main():
 
-    # STT
     queryByVoice()
 
 if __name__ == '__main__':

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""The Python implementation of GiGA Genie gRPC client"""
+"""Example 2: STT - getVoice2Text """
 
 from __future__ import print_function
 
@@ -57,7 +57,7 @@ from six.moves import queue
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 16000
-CHUNK = 1024
+CHUNK = 512
 
 # MicrophoneStream - original code in https://goo.gl/7Xy3TT
 class MicrophoneStream(object):
