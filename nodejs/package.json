@@ -5,8 +5,8 @@
 		"node-record-lpcm16":"0.3.0",
 		"grpc":"1.11.3",
 		"dateformat":"3.0.3",
-		"mplayer":"2.1.0",
 		"speaker":"0.4.1",
-		"rpio":"0.9.21"
+		"rpio":"0.9.21",
+		"rpi-gpio":"1.0.0"
 	}
 }

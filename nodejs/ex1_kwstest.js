@@ -1,10 +1,26 @@
 const record=require('node-record-lpcm16');
-const mplayer=require('mplayer');
 const ktkws=require('./ktkws');
-const player=new mplayer();
 const kwstext=['기가지니','지니야','친구야','자기야'];
+const Speaker=require('speaker');
+const fs=require('fs');
+
+//for play sample sound
+const soundBuffer=fs.readFileSync('../data/sample_sound.wav');
+const pcmplay=new Speaker({
+	channels:1,
+	bitDepth:16,
+	sampleRate:16000
+});
+
+
+//for setting kws type
 const kwsflag=parseInt(process.argv[2]);
-let pcm=null;
+let res=ktkws.initialize('../data/kwsmodel.pack');
+console.log('Initialize KWS:'+res);
+res=ktkws.startKws(kwsflag);
+console.log('start KWS:'+res);
+
+//for getting microphone input
 function initMic(){
         return record.start({
                 sampleRateHertz: 16000,
@@ -13,16 +29,14 @@ function initMic(){
                 recordProgram: 'arecord',
         })
 };
-let res=ktkws.initialize('../data/kwsmodel.pack');
-console.log('Initialize:'+res);
-res=ktkws.startKws(kwsflag);
-console.log('startKws:'+res);
 let mic=initMic();
 mic.on('data',(data)=>{
+	//push pcm data to ktkws library
 	result=ktkws.pushBuffer(data);
 	if(result===1) {
 		console.log("KWS Detected");
-		player.openFile('../data/sample_sound.wav');
+		//play sample sound
+		pcmplay.write(soundBuffer);
 	}
 });
 console.log('say :'+kwstext[kwsflag]);

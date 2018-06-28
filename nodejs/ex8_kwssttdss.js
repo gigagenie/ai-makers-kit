@@ -1,16 +1,17 @@
 const record=require('node-record-lpcm16');
 const aikit=require('./aimakerskitutil');
 const ktkws=require('./ktkws');
-
-//for playing pcm sound
 const Speaker=require('speaker');
 const fs=require('fs');
+
+//for playing pcm sound
 const soundBuffer=fs.readFileSync('../data/sample_sound.wav');
 const pcmplay=new Speaker({
 	channels:1,
 	bitDepth:16,
 	sampleRate:16000
 });
+
 
 const client_id='';
 const client_key='';
@@ -21,7 +22,7 @@ const proto_path='../data/gigagenieRPC.proto';
 
 const kwstext=['기가지니','지니야','친구야','자기야'];
 const kwsflag=parseInt(process.argv[2]);
-
+let pcm=null;
 function initMic(){
         return record.start({
                 sampleRateHertz: 16000,
@@ -45,26 +46,45 @@ mic.on('data',(data)=>{
 		if(result===1) {
 			console.log("KWS Detected");
 			pcmplay.write(soundBuffer);
-			setTimeout(startStt,1000);
+			setTimeout(startQueryVoice,1000);
 		}
 	} else {
     		ktstt.write({audioContent:data});
 	}
 });
 console.log('say :'+kwstext[kwsflag]);
-function startStt(){
-	ktstt=aikit.getVoice2Text();
-	ktstt.on('error',(error)=>{
-	    console.log('Error:'+error);
+
+function startQueryVoice(){
+	ktstt=aikit.queryByVoice((err,msg)=>{
+		if(err){
+			console.log(JSON.stringify(err));
+			mode=0;
+		} else {
+			console.log('Msg:'+JSON.stringify(msg));
+			const action=msg.action[0];
+			if(action){
+				const actType=action.actType;
+				const mesg=action.mesg;
+				console.log('actType:'+actType+' mesg:'+mesg);
+				if(actType==='99' || actType==='601' || actType==='631' || actType==='607' || actType==='608' || actType==='606'){
+					let kttts=aikit.getText2VoiceStream({text:mesg,lang:0,mode:0});
+					kttts.on('error',(error)=>{
+						console.log('Error:'+error);
+					});
+					kttts.on('data',(data)=>{
+						if(data.streamingResponse==='resOptions' && data.resOptions.resultCd===200) console.log('Stream send. format:'+data.resOptions.format);
+						if(data.streamingResponse==='audioContent') {
+							pcmplay.write(data.audioContent);
+						} else console.log('msg received:'+JSON.stringify(data));
+					});
+					kttts.on('end',()=>{
+						console.log('pcm end');
+						mode=0;
+					});
+				} else mode=0
+			} else mode=0;
+		}
 	});
-	ktstt.on('data',(data)=>{
-		console.log('stt result:'+JSON.stringify(data));
-		if(data.resultCd!==200) mode=0;
-	});
-	ktstt.on('end',()=>{
-		console.log('stt text stream end');
-		mode=0;
-	});
-	ktstt.write({reqOptions:{mode:0,lang:0}});
+	ktstt.write({reqOptions:{lang:0,userSession:'12345',deviceId:'D06190914TP808IQKtzq'}});
 	mode=1;
 };
