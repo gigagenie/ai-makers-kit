@@ -20,18 +20,20 @@ client key를 먼저 발급 받아야 합니다.
 
 INSTALL ...
 
-> $ sudo apt-get install libasound-dev
-> $ sudo apt-get install libportaudio2
-> $ sudo apt-get install python-pip
-> $ sudo pip install pyaudio
-> $ sudo pip install grpcio grpcio-tools
-> $ sudo cp ../lib/libkwscmdapi.so /usr/local/bin/
-> $ sudo /sbin/ldconfig -v
-> $ sudo python -m easy_install ./install/ktkws-1.0.1-py2.7-linux-armv7l.egg
+    $ sudo apt-get install libasound-dev
+    $ sudo apt-get install libportaudio2
+    $ sudo apt-get install python-pip
+    $ sudo pip install pyaudio
+    $ sudo pip install grpcio grpcio-tools
+    $ sudo cp ../lib/libkwscmdapi.so /usr/local/bin/
+    $ sudo /sbin/ldconfig -v
+    $ sudo python -m easy_install ./install/ktkws-1.0.1-py2.7-linux-armv7l.egg
 
 SET YOUR CLIENT KEY INFORMATION,
 
-> $ vi main_demo.py
+    $ vi main_demo.py
+    
+아래 정보를 기가지니 포털에서 발급 받은 클라이언트 키 정보로 업데이트 하세요.
         
     # set your client key information
     CLIENT_ID = 'YOUR_CLIENT_ID'
@@ -40,7 +42,7 @@ SET YOUR CLIENT KEY INFORMATION,
 
 and RUN !!!
 
-> $ python main_demo.py
+    $ python main_demo.py
     
 ## Usage
 
