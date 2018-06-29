@@ -33,10 +33,10 @@ SET YOUR CLIENT KEY INFORMATION,
 
     $ vi main_demo.py
     
-`# set your client key information`
-`CLIENT_ID = 'YOUR_CLIENT_ID'`
-`CLIENT_KEY = 'YOUR_CLIENT_KEY'`
-`CLIENT_SECRET = 'YOUR_CLIENT_SECRET'`
+    # set your client key information
+    CLIENT_ID = 'YOUR_CLIENT_ID'
+    CLIENT_KEY = 'YOUR_CLIENT_KEY'
+    CLIENT_SECRET = 'YOUR_CLIENT_SECRET'
 
 and RUN !!!
 
