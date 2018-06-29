@@ -21,7 +21,7 @@ def sample():
     
     while True:
         print ('========')
-        if gkit.kws_detect() == 200:
+        if gkit.kws_detect() == 1:
             stt_text = gkit.getVoice2Text()
             print (stt_text)
             if stt_text != '':
