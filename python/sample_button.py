@@ -15,7 +15,7 @@ CLIENT_KEY = 'YOUR_CLIENT_KEY'
 CLIENT_SECRET = 'YOUR_CLIENT_SECRET'
 
 def onButtonHandler():
-    print ("Button was pushed")
+    print ("Button was pressed")
     stt_text = gkit.getVoice2Text()
     print (stt_text)
     if stt_text != '':

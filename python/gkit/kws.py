@@ -52,7 +52,7 @@ def kws_detect():
 
             if (rc == 1):
                 play_wav(KWSSOUNDFILE)
-                return 200
+                return rc
 
 class KeywordDetector(object):
 
