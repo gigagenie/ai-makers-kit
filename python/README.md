@@ -21,7 +21,7 @@ client key를 먼저 발급 받아야 합니다.
 INSTALL ...
 
     $ sudo apt-get install libasound-dev
-    $ sudo apt-get install libportaudio2
+    $ sudo apt-get install libportaudio0 libportaudio2 libportaudiocpp0 portaudio19-dev
     $ sudo apt-get install python-pip
     $ sudo pip install pyaudio
     $ sudo pip install grpcio grpcio-tools
