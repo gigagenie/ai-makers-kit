@@ -15,7 +15,7 @@ import time
 
 KWSID = ['기가지니', '지니야', '친구야', '자기야']
 KWSMODELDATA = "../data/kwsmodel.pack"
-KWSSOUNDFILE = "../data/sample_yes.wav"
+KWSSOUNDFILE = "../data/sample_sound.wav"
 
 g_kwsid = 1     # default: 지니야
 
