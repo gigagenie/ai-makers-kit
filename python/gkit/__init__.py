@@ -9,6 +9,9 @@ __license__ = 'MIT'
 __copyright__ = 'Copyright (c) 2018 KT corp.'
 VERSION = tuple(map(int, __version__.split('.')))
 
-from ._drivers import *
+try:
+    from ._drivers import *
+except:
+    pass
 from .kws import *
 from .grpc import *

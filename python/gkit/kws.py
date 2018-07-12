@@ -8,10 +8,15 @@ from __future__ import absolute_import
 
 import ktkws
 from gkit._audio import *
-from gkit._drivers import *
-#from gkit._drivers import *
+from gkit._player import *
+try:
+    from gkit._drivers import *
+    isRPi = True
+except:
+    isRPi = False
 
 import time
+import os.path
 
 KWSID = ['기가지니', '지니야', '친구야', '자기야']
 KWSMODELDATA = "../data/kwsmodel.pack"
@@ -20,6 +25,8 @@ KWSSOUNDFILE = "../data/sample_sound.wav"
 g_kwsid = 1     # default: 지니야
 
 def kws_start():
+    if not os.path.isfile(KWSMODELDATA):
+        raise ValueError('File not found: ' + KWSMODELDATA)
     rc = ktkws.init(KWSMODELDATA)
     rc = ktkws.start()
     ktkws.set_keyword(g_kwsid)
@@ -51,21 +58,22 @@ def kws_detect():
             #print('audio rms = %d' % (rms))
 
             if (rc == 1):
-                play_wav(KWSSOUNDFILE)
+                #play_wav(KWSSOUNDFILE)
                 return rc
 
 class KeywordDetector(object):
 
     def __init__(self):
 
-        #ktkws.init(KWSMODELDATA)
-        #ktkws.start()
-        #ktkws.set_keyword(g_kwsid)
         kws_start()
+        if not os.path.isfile(KWSSOUNDFILE):
+            raise ValueError('File not found: ' + KWSSOUNDFILE)
 
         self._callback = None
         self._running = True
         self._button_pressed = False
+
+        self._player = WavePlayer()
 
     def _detect(self):
 
@@ -80,7 +88,7 @@ class KeywordDetector(object):
                 rc = ktkws.detect(content)
 
                 if (rc == 1):
-                    play_wav(KWSSOUNDFILE)
+                    self._player.play_audio()
                     return True
                 if self._button_pressed is True:
                     return True
@@ -92,7 +100,11 @@ class KeywordDetector(object):
 
         self._callback = callback
 
-        get_button().on_press(self._button_callback)
+        # load detect sound
+        self._player.load_audio(KWSSOUNDFILE)
+
+        if isRPi:
+            get_button().on_press(self._button_callback)
 
         while self._running is True:
             if self._detect() is True:
@@ -108,4 +120,6 @@ class KeywordDetector(object):
         self._running = False
 
     def setkeyword(self, wakeword):
+        if wakeword not in KWSID:
+            raise ValueError('Invalid wake word(keyword): ' + wakeword)
         kws_setkeyword(wakeword)
