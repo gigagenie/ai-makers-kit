@@ -31,14 +31,14 @@ INSTALL ...
 
 SET YOUR CLIENT KEY INFORMATION,
 
-    $ vi main_demo.py
+    $ vi gkit.config
     
 아래 정보를 기가지니 포털에서 발급 받은 클라이언트 키 정보로 업데이트 하세요.
         
-    # set your client key information
-    CLIENT_ID = 'YOUR_CLIENT_ID'
-    CLIENT_KEY = 'YOUR_CLIENT_KEY'
-    CLIENT_SECRET = 'YOUR_CLIENT_SECRET'
+    [client]
+    clientid: YOUR_CLIENT_ID
+    clientkey: YOUR_CLIENT_KEY
+    clientsecret: YOUR_CLIENT_SECRET
 
 and RUN !!!
 
