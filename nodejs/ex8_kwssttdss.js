@@ -1,8 +1,13 @@
 const record=require('node-record-lpcm16');
 const aikit=require('./aimakerskitutil');
-const ktkws=require('./ktkws');
 const Speaker=require('speaker');
 const fs=require('fs');
+
+//node version check
+const nodeVersion=process.version.split('.')[0];
+let ktkws=null;
+if(nodeVersion==='v6') ktkws=require('./ktkws');
+else if(nodeVersion==='v8') ktkws=require('./ktkws_v8');
 
 //for playing pcm sound
 const soundBuffer=fs.readFileSync('../data/sample_sound.wav');

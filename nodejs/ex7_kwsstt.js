@@ -1,6 +1,11 @@
 const record=require('node-record-lpcm16');
 const aikit=require('./aimakerskitutil');
-const ktkws=require('./ktkws');
+
+//node version check
+const nodeVersion=process.version.split('.')[0];
+let ktkws=null;
+if(nodeVersion==='v6') ktkws=require('./ktkws');
+else if(nodeVersion==='v8') ktkws=require('./ktkws_v8');
 
 //for playing pcm sound
 const Speaker=require('speaker');
