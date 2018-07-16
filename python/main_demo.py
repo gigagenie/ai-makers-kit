@@ -8,11 +8,9 @@ from __future__ import absolute_import
 
 import gkit
 import time
+import traceback
 
-# set your client key information
-CLIENT_ID = 'YOUR_CLIENT_ID'
-CLIENT_KEY = 'YOUR_CLIENT_KEY'
-CLIENT_SECRET = 'YOUR_CLIENT_SECRET'
+# set your client key information on gkit.config(CONFIG FILE)
 
 led_state = {
     'ready'     : gkit.LED.PULSE_QUICK,
@@ -35,8 +33,6 @@ def myservice():
 
 def main():
 
-    gkit.set_clientkey(CLIENT_ID, CLIENT_KEY, CLIENT_SECRET)
-
     detector = gkit.KeywordDetector()
     # keyword: '지니야'(default), '기가지니', '친구야', '자기야'
     detector.setkeyword('친구야')
@@ -48,6 +44,7 @@ def main():
         led.set_state(led_state['off'])
         time.sleep(1)
         led.stop()
+        traceback.print_exc()
 
 if __name__ == '__main__':
     main()

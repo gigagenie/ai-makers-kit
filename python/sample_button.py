@@ -9,10 +9,7 @@ from __future__ import absolute_import
 import gkit
 import time
 
-# set your client key information
-CLIENT_ID = 'YOUR_CLIENT_ID'
-CLIENT_KEY = 'YOUR_CLIENT_KEY'
-CLIENT_SECRET = 'YOUR_CLIENT_SECRET'
+# set your client key information on gkit.config(CONFIG FILE)
 
 def onButtonHandler():
     print ("Button was pressed")
@@ -23,8 +20,6 @@ def onButtonHandler():
 
 def sample():
     
-    gkit.set_clientkey(CLIENT_ID, CLIENT_KEY, CLIENT_SECRET)
-
     # button
     gkit.get_button().on_press(onButtonHandler)
 

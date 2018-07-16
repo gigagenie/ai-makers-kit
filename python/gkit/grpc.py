@@ -6,6 +6,7 @@
 from __future__ import print_function
 from __future__ import absolute_import
 
+from gkit._config import *
 from gkit._audio import *
 
 # gRPC
@@ -17,13 +18,13 @@ import datetime
 import hmac
 import hashlib
 
-# Config for GiGA Genie gRPC
-CLIENT_ID = 'YOUR_CLIENT_ID'
-CLIENT_KEY = 'YOUR_CLIENT_KEY'
-CLIENT_SECRET = 'YOUR_CLIENT_SECRET'
-HOST = 'gate.gigagenie.ai'
-PORT = 4080
-SSLCERTFILE = "../data/ca-bundle.pem"
+# Config for GiGA Genie gRPC : config.read('gkit.config')
+CLIENT_ID = config.get('client', 'clientid')
+CLIENT_KEY = config.get('client', 'clientkey')
+CLIENT_SECRET = config.get('client', 'clientsecret')
+HOST = config.get('grpc', 'host')
+PORT = int(config.get('grpc', 'port'))
+SSLCERTFILE = config.get('grpc', 'cert')
 
 ### COMMON : Client Credentials ###
 

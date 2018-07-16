@@ -7,6 +7,7 @@ from __future__ import print_function
 from __future__ import absolute_import
 
 import ktkws
+from gkit._config import *
 from gkit._audio import *
 from gkit._player import *
 try:
@@ -19,8 +20,9 @@ import time
 import os.path
 
 KWSID = ['기가지니', '지니야', '친구야', '자기야']
-KWSMODELDATA = "../data/kwsmodel.pack"
-KWSSOUNDFILE = "../data/sample_sound.wav"
+# read config file: gkit.config
+KWSMODELDATA = config.get('kws', 'data')
+KWSSOUNDFILE = config.get('kws', 'sound')
 
 g_kwsid = 1     # default: 지니야
 
