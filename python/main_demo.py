@@ -39,11 +39,12 @@ def main():
     try:
         led.set_state(led_state['ready'])
         detector.start(callback = myservice)
-    except:
+    except KeyboardInterrupt:
         detector.terminate()
         led.set_state(led_state['off'])
         time.sleep(1)
         led.stop()
+    except:
         traceback.print_exc()
 
 if __name__ == '__main__':
