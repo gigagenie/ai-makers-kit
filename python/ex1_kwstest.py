@@ -80,7 +80,7 @@ class MicrophoneStream(object):
 
 def print_rms(rms):
     out = ''
-    for _ in xrange(int(round(rms/30))):
+    for _ in range(int(round(rms/30))):
         out = out + '*'
     
     print (out)
@@ -103,7 +103,7 @@ def play_file(fname):
     data = wf.readframes(chunk)
 
     # play stream (looping from beginning of file to the end)
-    while data != '':
+    while len(data) > 0:
         # writing to the stream is what *actually* plays the sound.
         stream.write(data)
         data = wf.readframes(chunk)

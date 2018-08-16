@@ -20,7 +20,7 @@ CLIENT_ID = ''
 CLIENT_KEY = ''
 CLIENT_SECRET = ''
 HOST = 'gate.gigagenie.ai'
-PORT = 4080    
+PORT = 4080
 
 ### COMMON : Client Credentials ###
 
@@ -28,7 +28,7 @@ def getMetadata():
     timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S%f")[:-3]
     message = CLIENT_ID + ':' + timestamp
 
-    signature = hmac.new(CLIENT_SECRET, message, hashlib.sha256).hexdigest()
+    signature = hmac.new(CLIENT_SECRET.encode(), message.encode(), hashlib.sha256).hexdigest()
 
     metadata = [('x-auth-clientkey', CLIENT_KEY),
                 ('x-auth-timestamp', timestamp),

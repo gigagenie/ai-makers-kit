@@ -27,7 +27,7 @@ def getMetadata():
     timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S%f")[:-3]
     message = CLIENT_ID + ':' + timestamp
 
-    signature = hmac.new(CLIENT_SECRET, message, hashlib.sha256).hexdigest()
+    signature = hmac.new(CLIENT_SECRET.encode(), message.encode(), hashlib.sha256).hexdigest()
 
     metadata = [('x-auth-clientkey', CLIENT_KEY),
                 ('x-auth-timestamp', timestamp),
@@ -124,7 +124,7 @@ class MicrophoneStream(object):
 
 def print_rms(rms):
     out = ''
-    for _ in xrange(int(round(rms/30))):
+    for _ in range(int(round(rms/30))):
         out = out + '*'
     
     print (out)
