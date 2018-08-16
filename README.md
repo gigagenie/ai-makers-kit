@@ -10,6 +10,7 @@ GiGA Genie에서 제공하는 AI Makers Kit은 H/W(Raspberry Pi + Mic/Spk Kit)�
 ### Directory
 
     data/       : KWS model data, Sound data, etc.
+    driver/     : AI Makers Kit Drivers Package(audio/mic)
     lib/        : GiGA Genie KWS shared library for Raspberry Pi
     nodejs/     : Node.js support
     python/     : Python support

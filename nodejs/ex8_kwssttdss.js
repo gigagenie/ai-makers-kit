@@ -1,13 +1,8 @@
 const record=require('node-record-lpcm16');
 const aikit=require('./aimakerskitutil');
+const ktkws=require('./ktkws');
 const Speaker=require('speaker');
 const fs=require('fs');
-
-//node version check
-const nodeVersion=process.version.split('.')[0];
-let ktkws=null;
-if(nodeVersion==='v6') ktkws=require('./ktkws');
-else if(nodeVersion==='v8') ktkws=require('./ktkws_v8');
 
 //for playing pcm sound
 const soundBuffer=fs.readFileSync('../data/sample_sound.wav');
@@ -21,7 +16,7 @@ const pcmplay=new Speaker({
 const client_id='';
 const client_key='';
 const client_secret='';
-const json_path='';
+const json_path='./clientKey.json';
 const cert_path='../data/ca-bundle.pem';
 const proto_path='../data/gigagenieRPC.proto';
 
@@ -43,18 +38,18 @@ let mic=initMic();
 //aikit.initialize(client_id,client_key,client_secret,cert_path,proto_path);
 aikit.initializeJson(json_path,cert_path,proto_path);
 
-let mode=0;//0:kws, 1:stt
+let mode=0;//0:kws, 1:queryByVoice
 let ktstt=null;
 mic.on('data',(data)=>{
-	if(mode===0){
+	if(mode===0){ //1)
 		result=ktkws.pushBuffer(data);
-		if(result===1) {
+		if(result===1) { //2)
 			console.log("KWS Detected");
 			pcmplay.write(soundBuffer);
-			setTimeout(startQueryVoice,1000);
+			setTimeout(startQueryVoice,1000); // 3)
 		}
 	} else {
-    		ktstt.write({audioContent:data});
+    		ktstt.write({audioContent:data}); //4)
 	}
 });
 console.log('say :'+kwstext[kwsflag]);
@@ -69,13 +64,20 @@ function startQueryVoice(){
 			const action=msg.action[0];
 			if(action){
 				const actType=action.actType;
-				const mesg=action.mesg;
+				let mesg=action.mesg;
 				console.log('actType:'+actType+' mesg:'+mesg);
-				if(actType==='99' || actType==='601' || actType==='631' || actType==='607' || actType==='608' || actType==='606'){
+				//5)
+				if(actType==='99' || actType==='601' || actType==='631' || actType==='607' || actType==='608' || actType==='606' || actType==='9999'){
+					if(actType==='9999'){
+						let textProcess=action.serviceId.split('SystemMsg')[1].split(',')[0].substring(3,);
+						mesg=textProcess.substring(0,textProcess.length-1);
+					}
+					//6)
 					let kttts=aikit.getText2VoiceStream({text:mesg,lang:0,mode:0});
 					kttts.on('error',(error)=>{
 						console.log('Error:'+error);
 					});
+					//7)
 					kttts.on('data',(data)=>{
 						if(data.streamingResponse==='resOptions' && data.resOptions.resultCd===200) console.log('Stream send. format:'+data.resOptions.format);
 						if(data.streamingResponse==='audioContent') {
@@ -84,12 +86,12 @@ function startQueryVoice(){
 					});
 					kttts.on('end',()=>{
 						console.log('pcm end');
-						mode=0;
+						mode=0;//9)
 					});
-				} else mode=0
-			} else mode=0;
+				} else mode=0//9)
+			} else mode=0;//9)
 		}
 	});
 	ktstt.write({reqOptions:{lang:0,userSession:'12345',deviceId:'D06190914TP808IQKtzq'}});
-	mode=1;
+	mode=1;//8)
 };
