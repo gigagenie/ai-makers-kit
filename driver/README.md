@@ -11,12 +11,12 @@ AI Makers Kit을 이용하기 위해 필요한 드라이버 설치 가이드입�
  
 4. “aimk-install.sh”파일을 아래와 같이 실행합니다.
 
-    $ sudo ./aimk-install.sh
+    $ ./aimk-install.sh
  
 5. 인스톨이 완료까지 기다리면 재부팅 합니다..
 6. 재부팅이 되면 “after-install.sh" 파일을 아래와 같이 실행합니다
 
-    $ sudo ./after-install.sh
+    $ ./after-install.sh
  
 7. 실행 완료 후 재부팅이 되면 정상적으로 음성이 출력되는지 확인합니다.
 
