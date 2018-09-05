@@ -7,6 +7,7 @@
 		"dateformat":"3.0.3",
 		"speaker":"0.4.1",
 		"rpio":"0.9.21",
-		"rpi-gpio":"1.0.0"
+		"rpi-gpio":"1.0.0",
+		"youtube-dl":"1.12.2"
 	}
 }
