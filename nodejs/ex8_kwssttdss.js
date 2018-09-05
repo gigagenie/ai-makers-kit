@@ -1,6 +1,5 @@
 const record=require('node-record-lpcm16');
 const aikit=require('./aimakerskitutil');
-const ktkws=require('./ktkws');
 const Speaker=require('speaker');
 const fs=require('fs');
 
@@ -11,6 +10,11 @@ const pcmplay=new Speaker({
 	bitDepth:16,
 	sampleRate:16000
 });
+//node version check
+const nodeVersion=process.version.split('.')[0];
+let ktkws=null;
+if(nodeVersion==='v6') ktkws=require('./ktkws');
+else if(nodeVersion==='v8') ktkws=require('./ktkws_v8');
 
 
 const client_id='';
