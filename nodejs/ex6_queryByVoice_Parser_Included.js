@@ -43,6 +43,12 @@ function JSON_Parser(msg){
 	dss_info.intent_answer = kit_info_json.SystemMsg;
 	dss_info.app_info = JSON.stringify(kit_info_json.appinfo);
 	
+	//Print Out User DSS INFO
+	console.log("Query Text : " + dss_info.querytext);
+	console.log('App ID: ' + dss_info.app_id);
+	console.log('Intent Name: ' + dss_info.intent_name);
+	console.log('Intent에 대한 답변: ' + dss_info.intent_answer);
+	console.log('App 기본정보: ' + dss_info.app_info);
 };
 
 
