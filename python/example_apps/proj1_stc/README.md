@@ -25,3 +25,6 @@ AI MAKERS KIT을 이용하여 발화로 쓰레기통을 움직이는 프로젝�
 
 ## 4. 실행 방법
 pi@raspberrypi:~/ai-makers-kit/ex_app/proj1_stc $ python smart_trash_can.py
+
+## 5. 실행 동영상
+[![Alt text for your video](https://img.youtube.com/vi/LSxxszpk2NE/0.jpg)](http://www.youtube.com/watch?v=LSxxszpk2NE)
