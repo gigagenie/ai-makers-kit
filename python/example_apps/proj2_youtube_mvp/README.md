@@ -9,7 +9,9 @@ AI MAKERS KIT을 이용하여 발화로 유튜브 동영상(뮤직 비디오 포
 본 프로젝트는 파이썬3 버전에서 정상 동작합니다.
 ### 2-1. 환경 구축
 #### 2-1-1. 파이썬3 버전 호출어 업데이트
+
 아래 명령어 통해 파이썬3 버전 호출어로 업데이트 합니다.
+
 pi@raspberrypi:~/ai-makers-kit/ex_app/proj2_youtube_mvp $ sudo ./ktkws_py3_update.sh
 
 #### 2-1-2. 관련 라이브러리 설치
