@@ -1,17 +1,12 @@
-# Smart Trash Can 만들기 프로젝트
-AI MAKERS KIT을 이용하여 발화로 쓰레기통을 움직이는 프로젝트입니다.
+# YouTube Music Video Player 만들기 프로젝트
+AI MAKERS KIT을 이용하여 발화로 유튜브 동영상(뮤직 비디오 포함)을 재생하는 프로젝트입니다.
 
 ![Title_image](https://github.com/make1everything1hj/code_factory/blob/master/smart_trash_can.png)
-## 1. 필요 재료
-* 미니 휴지통 1개
-* 마이크로 서보모터 SG90 1개
-* PCA9685 서보모터 컨트롤러 1개
-* Step-down DC-DC 컨버터 모듈 1개
-* 18650 규격 배터리 홀더 (18650 * 2) 1개
-* 18650 규격 배터리 1개
+## 1. 필요한 재료
+* 모니터 혹은 7인치 LCD Display
 
-## 2. 배선도
-![curcuit](https://github.com/make1everything1hj/code_factory/blob/master/circuit_line2.png)
+## 2. 사전 준비
+### 2-1. 
 
 
 * Smart Trash Can은 18650 배터리를 통해 구동되며, DC 컨버터를 통해 공급받은 전력이 서보모터 컨트롤러를 통해 SG90 서보모터로 공급된다.
