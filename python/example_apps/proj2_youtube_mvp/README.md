@@ -1,7 +1,7 @@
 # YouTube Music Video Player 만들기 프로젝트
 AI MAKERS KIT을 이용하여 발화로 유튜브 동영상(뮤직 비디오 포함)을 재생하는 프로젝트입니다.
 
-![Title_image](https://github.com/make1everything1hj/code_factory/blob/master/thumnail.png)
+![Title_image](https://github.com/make1everything1hj/code_factory/blob/master/thumbnail.png)
 ## 1. 필요한 재료
 * 모니터 혹은 7인치 LCD Display
 
