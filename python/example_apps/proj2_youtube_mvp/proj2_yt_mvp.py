@@ -7,6 +7,8 @@ see http://docs.python.org/library/webbrowser.html
 """
 
 '''
+This application is Copyright ⓒ KT Corp. All rights reserved.
+
 @ TITLE: YOUTUBE MOIVE PLAYER
 @ Date: 2018.10.1 
 @ Written by PHJ
