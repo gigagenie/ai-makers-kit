@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
+""" This application is Copyright ⓒ KT Corp. All rights reserved. """
+
 """The Python implementation of GiGA Genie gRPC client"""
 
 from __future__ import print_function
@@ -27,7 +30,6 @@ GPIO.setup(31, GPIO.OUT)
 button = False
 
 '''
-Date: 2018.10
 Smart Trash Can Functions
 (스마트 휴지통 서보 모터 컨트롤 함수)
 setup: 초기 서보모터 각도 설정
