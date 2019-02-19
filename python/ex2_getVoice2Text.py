@@ -170,7 +170,6 @@ def getVoice2Text():
     return resultText
 
 def main():
-
     # STT
     text = getVoice2Text()
 
