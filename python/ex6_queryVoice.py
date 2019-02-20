@@ -12,8 +12,20 @@ import gigagenieRPC_pb2_grpc
 
 import os
 import datetime
+import time
 import hmac
 import hashlib
+### STT
+import pyaudio
+import audioop
+from six.moves import queue
+from ctypes import *
+
+FORMAT = pyaudio.paInt16
+CHANNELS = 1
+RATE = 16000
+CHUNK = 512
+
 
 # Config for GiGA Genie gRPC
 CLIENT_ID = ''
@@ -49,15 +61,13 @@ def getCredentials():
 
 ### END OF COMMON ###
 
-### STT
-import pyaudio
-import audioop
-from six.moves import queue
+ERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)
+def py_error_handler(filename, line, function, err, fmt):
+  dummy_var = 0
+c_error_handler = ERROR_HANDLER_FUNC(py_error_handler)
+asound = cdll.LoadLibrary('libasound.so')
+asound.snd_lib_error_set_handler(c_error_handler)
 
-FORMAT = pyaudio.paInt16
-CHANNELS = 1
-RATE = 16000
-CHUNK = 512
 
 # MicrophoneStream - original code in https://goo.gl/7Xy3TT
 class MicrophoneStream(object):
@@ -127,7 +137,7 @@ def print_rms(rms):
 	for _ in range(int(round(rms/30))):
 		out = out + '*'
 	
-	print (out)
+	#print (out)
 
 def generate_request():
 	with MicrophoneStream(RATE, CHUNK) as stream:
@@ -144,28 +154,34 @@ def generate_request():
 			rms = audioop.rms(content,2)
 			print_rms(rms)
 
-def queryByVoice():	
-	print ("Ctrl+\ to quit ...")
+def queryByVoice():
+	print ("\n\n\n질의할 내용을 말씀해 보세요.\n\n듣고 있는 중......\n")
+	#print ("종료하시려면 Ctrl+\ 키를 누르세요.")
 	channel = grpc.secure_channel('{}:{}'.format(HOST, PORT), getCredentials())
 	stub = gigagenieRPC_pb2_grpc.GigagenieStub(channel)
 	request = generate_request()
 	resultText = ''
 	response = stub.queryByVoice(request)
-	print ("resultCd: %d" % (response.resultCd))
+	#print("\n\nresultCd: %d\n\n" % (response.resultCd))
 	if response.resultCd == 200:
-		print ("Question: %s" % (response.uword))
+		print("질의 내용: %s" % (response.uword).encode('utf-8'))
 		for a in response.action:
-			resultText = a.mesg
-			print ("질의에 대한 답변 >> " + (a.mesg).encode('utf-8'))
+			response = (a.mesg).encode('utf-8')
+			parsing_resp = response.replace('<![CDATA[', '')
+			parsing_resp = parsing_resp.replace(']]>', '')
+			resultText = parsing_resp
+			print("\n질의에 대한 답변: " + parsing_resp +'\n\n\n')
 			#print (a.actType)
 
 	else:
-		print ("Fail: %d" % (response.resultCd))
+		print("\n\nresultCd: %d\n" % (response.resultCd))
+		print("정상적인 음성인식이 되지 않았습니다.")
+		#print("Fail: %d" % (response.resultCd))	
 	return resultText
 
 def main():
-
 	queryByVoice()
+	time.sleep(0.5)
 
 if __name__ == '__main__':
 	main()

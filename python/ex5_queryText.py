@@ -25,61 +25,64 @@ PORT = 4080
 ### COMMON : Client Credentials ###
 
 def getMetadata():
-    timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S%f")[:-3]
-    message = CLIENT_ID + ':' + timestamp
+	timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S%f")[:-3]
+	message = CLIENT_ID + ':' + timestamp
 
-    signature = hmac.new(CLIENT_SECRET.encode(), message.encode(), hashlib.sha256).hexdigest()
+	signature = hmac.new(CLIENT_SECRET.encode(), message.encode(), hashlib.sha256).hexdigest()
 
-    metadata = [('x-auth-clientkey', CLIENT_KEY),
-                ('x-auth-timestamp', timestamp),
-                ('x-auth-signature', signature)]
+	metadata = [('x-auth-clientkey', CLIENT_KEY),
+				('x-auth-timestamp', timestamp),
+				('x-auth-signature', signature)]
 
-    return metadata
+	return metadata
 
 def credentials(context, callback):
-    callback(getMetadata(), None)
+	callback(getMetadata(), None)
 
 def getCredentials():
-    with open('../data/ca-bundle.pem', 'rb') as f:
-        trusted_certs = f.read()
-    sslCred = grpc.ssl_channel_credentials(root_certificates=trusted_certs)
+	with open('../data/ca-bundle.pem', 'rb') as f:
+		trusted_certs = f.read()
+	sslCred = grpc.ssl_channel_credentials(root_certificates=trusted_certs)
 
-    authCred = grpc.metadata_call_credentials(credentials)
+	authCred = grpc.metadata_call_credentials(credentials)
 
-    return grpc.composite_channel_credentials(sslCred, authCred)
+	return grpc.composite_channel_credentials(sslCred, authCred)
 
 ### END OF COMMON ###
 
 # DIALOG : queryByText
 def queryByText(text):
 
-    channel = grpc.secure_channel('{}:{}'.format(HOST, PORT), getCredentials())
-    stub = gigagenieRPC_pb2_grpc.GigagenieStub(channel)
+	channel = grpc.secure_channel('{}:{}'.format(HOST, PORT), getCredentials())
+	stub = gigagenieRPC_pb2_grpc.GigagenieStub(channel)
 
-    message = gigagenieRPC_pb2.reqQueryText()
-    message.queryText = text
-    message.userSession = "1234"
-    message.deviceId = "yourdevice"
+	message = gigagenieRPC_pb2.reqQueryText()
+	message.queryText = text
+	message.userSession = "1234"
+	message.deviceId = "yourdevice"
 		
-    response = stub.queryByText(message)
+	response = stub.queryByText(message)
 
-    print ("resultCd: %d" % (response.resultCd))
-    if response.resultCd == 200:
-        print ("uword: %s" % (response.uword))
-        #dssAction = response.action
-        for a in response.action:
-            print (a.mesg)
-            print (a.actType)
-
-        #return response.url
-    else:
-        print ("Fail: %d" % (response.resultCd))
-        #return None	 
+	print ("\n\nresultCd: %d" % (response.resultCd))
+	if response.resultCd == 200:
+		print ("\n\n\n질의한 내용: %s" % (response.uword).encode('utf-8'))
+		#dssAction = response.action
+		for a in response.action:
+			#print (a.mesg)
+			response = (a.mesg).encode('utf-8')
+			#print (a.actType)
+		parsing_resp = response.replace('<![CDATA[', '')
+		parsing_resp = parsing_resp.replace(']]>', '')
+		print("\n\n질의에 대한 답변: " + parsing_resp + '\n\n\n')
+		#return response.url
+	else:
+		print ("Fail: %d" % (response.resultCd))
+		#return None	 
 
 def main():
 
-    # Dialog : queryByText
-    queryByText("안녕")
+	# Dialog : queryByText
+	queryByText("안녕")
 
 if __name__ == '__main__':
-    main()
+	main()

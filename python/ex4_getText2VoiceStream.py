@@ -14,6 +14,7 @@ import os
 import datetime
 import hmac
 import hashlib
+import ex1_kwstest as kws
 
 # Config for GiGA Genie gRPC
 CLIENT_ID = ''
@@ -59,15 +60,19 @@ def getText2VoiceStream(inText,inFileName):
 	writeFile=open(inFileName,'wb')
 	for response in stub.getText2VoiceStream(message):
 		if response.HasField("resOptions"):
-			print ("ResVoiceResult: %d" %(response.resOptions.resultCd))
+			print ("\n\nResVoiceResult: %d" %(response.resOptions.resultCd))
 		if response.HasField("audioContent"):
-			print ("Audio Stream")
+			print ("Audio Stream\n\n")
 			writeFile.write(response.audioContent)
 	writeFile.close()
 	return response.resOptions.resultCd
 
 def main():
-	getText2VoiceStream("안녕하세요. 반갑습니다.","./testtts.wav")
+	output_file = "testtts.wav"
+	getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)
+	kws.play_file(output_file)
+	print( output_file + "이 생성되었으니 파일을 확인바랍니다. \n\n\n")
+	
 
 if __name__ == '__main__':
 	main()

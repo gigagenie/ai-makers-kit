@@ -44,13 +44,13 @@ def main():
 	while 1:
 		recog=kws.test(KWSID[0])
 		if recog == 200:
-			print('KWS Dectected ...\n Start STT...')
+			print('KWS Dectected ...\n')
 			dss_answer = dss.queryByVoice()
 			tts_result = tts.getText2VoiceStream(dss_answer, "result_mesg.wav")
 			if dss_answer == '':
-				print('질의한 내용이 없습니다.')
+				print('질의한 내용이 없습니다.\n\n\n')
 			elif tts_result == 500:
-				print("TTS 동작 에러입니다.\n")
+				print("TTS 동작 에러입니다.\n\n\n")
 				break
 			else:
 				kws.play_file("result_mesg.wav")			

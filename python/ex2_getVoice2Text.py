@@ -15,6 +15,17 @@ import datetime
 import hmac
 import hashlib
 
+### STT
+import pyaudio
+import audioop
+from six.moves import queue
+from ctypes import *
+
+FORMAT = pyaudio.paInt16
+CHANNELS = 1
+RATE = 16000
+CHUNK = 512
+
 # Config for GiGA Genie gRPC
 CLIENT_ID = ''
 CLIENT_KEY = ''
@@ -49,15 +60,13 @@ def getCredentials():
 
 ### END OF COMMON ###
 
-### STT
-import pyaudio
-import audioop
-from six.moves import queue
+ERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)
+def py_error_handler(filename, line, function, err, fmt):
+  dummy_var = 0
+c_error_handler = ERROR_HANDLER_FUNC(py_error_handler)
+asound = cdll.LoadLibrary('libasound.so')
+asound.snd_lib_error_set_handler(c_error_handler)
 
-FORMAT = pyaudio.paInt16
-CHANNELS = 1
-RATE = 16000
-CHUNK = 512
 
 # MicrophoneStream - original code in https://goo.gl/7Xy3TT
 class MicrophoneStream(object):
@@ -128,7 +137,7 @@ def print_rms(rms):
     for _ in range(int(round(rms/30))):
         out = out + '*'
     
-    print (out)
+    #print (out)
 
 def generate_request():
 
@@ -144,8 +153,7 @@ def generate_request():
             print_rms(rms)
 
 def getVoice2Text():	
-
-    print ("Ctrl+\ to quit ...")
+    print ("\n\n음성인식을 시작합니다.\n\n종료하시려면 Ctrl+\ 키를 누루세요.\n\n\n")
 	
     channel = grpc.secure_channel('{}:{}'.format(HOST, PORT), getCredentials())
     stub = gigagenieRPC_pb2_grpc.GigagenieStub(channel)
@@ -166,7 +174,7 @@ def getVoice2Text():
                   % (response.resultCd, response.recognizedText))
             break
 
-    print ("TEXT: %s" % (resultText))
+    print ("\n\n인식결과: %s \n\n\n" % (resultText).encode('utf-8'))
     return resultText
 
 def main():
