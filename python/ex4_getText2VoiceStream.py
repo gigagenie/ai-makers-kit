@@ -39,9 +39,7 @@ def credentials(context, callback):
 	callback(getMetadata(), None)
 
 def getCredentials():
-	with open('../data/ca-bundle.pem', 'rb') as f:
-		trusted_certs = f.read()
-	sslCred = grpc.ssl_channel_credentials(root_certificates=trusted_certs)
+	sslCred = grpc.ssl_channel_credentials()
 	authCred = grpc.metadata_call_credentials(credentials)
 	return grpc.composite_channel_credentials(sslCred, authCred)
 
