@@ -45,7 +45,6 @@ const client_id='';
 const client_key='';
 const client_secret='';
 const json_path='';
-const cert_path='../data/ca-bundle.pem';
 const proto_path='../data/gigagenieRPC.proto';
 response_answer='';
 
@@ -94,8 +93,8 @@ function JSON_Parser(msg){
 	
 };
 
-//aikit.initialize(client_id,client_key,client_secret,cert_path,proto_path);
-aikit.initializeJson(json_path,cert_path,proto_path);
+//aikit.initialize(client_id,client_key,client_secret,proto_path);
+aikit.initializeJson(json_path,proto_path);
 
 // 대화서버로 Intent를 보냄 (본 코드에서는 '라면 먹는다'라는 인텐트를 대화서버로 보냄)
 aikit.queryByText({queryText:'라면 먹는다',userSession:'12345',deviceId:'helloDevie'},(err,msg)=>{

@@ -25,7 +25,6 @@ const client_id='';
 const client_key='';
 const client_secret='';
 const json_path='';
-const cert_path='../data/ca-bundle.pem';
 const proto_path='../data/gigagenieRPC.proto';
 
 let pcm=null;
@@ -38,7 +37,7 @@ function initMic(){
         })
 };
 
-aikit.initializeJson(json_path,cert_path,proto_path);
+aikit.initializeJson(json_path,proto_path);
 
 let sysStat=0;//0:버튼이 눌려지고 서비스를 제공할 준비가 되어 있음, 1: 서비스를 제공중임
 

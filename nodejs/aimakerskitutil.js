@@ -25,23 +25,23 @@ let authCred=null;
 let credentials=null;
 let proto=null;
 let client=null;
-const initialize=(inClientId,inClientKey,inClientSecret,inCertPath,inProtoPath)=>{
+const initialize=(inClientId,inClientKey,inClientSecret,inProtoPath)=>{
 	client_id=inClientId;
 	client_key=inClientKey;
 	client_secret=inClientSecret;
-	sslCred=grpc.credentials.createSsl( fs.readFileSync(inCertPath));
+	sslCred=grpc.credentials.createSsl();
 	authCred=grpc.credentials.createFromMetadataGenerator(generateMetadata);
 	credentials=grpc.credentials.combineChannelCredentials(sslCred,authCred);
 	proto=grpc.load(inProtoPath).kt.gigagenie.ai.speech;
 	client=new proto.Gigagenie('gate.gigagenie.ai:4080',credentials);
 };
-const initializeJson=(inJsonFile,inCertPath,inProtoPath)=>{
+const initializeJson=(inJsonFile,inProtoPath)=>{
 	const readFromFile=fs.readFileSync(inJsonFile);
 	const jsonData=JSON.parse(readFromFile.toString());
 	client_id=jsonData.clientId;
 	client_key=jsonData.clientKey;
 	client_secret=jsonData.clientSecret;
-	sslCred=grpc.credentials.createSsl( fs.readFileSync(inCertPath));
+	sslCred=grpc.credentials.createSsl();
 	authCred=grpc.credentials.createFromMetadataGenerator(generateMetadata);
 	credentials=grpc.credentials.combineChannelCredentials(sslCred,authCred);
 	proto=grpc.load(inProtoPath).kt.gigagenie.ai.speech;

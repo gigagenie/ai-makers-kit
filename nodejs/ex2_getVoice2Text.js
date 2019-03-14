@@ -6,7 +6,6 @@ const client_key='';
 const client_secret='';
 const json_path='';
 
-const cert_path='../data/ca-bundle.pem';
 const proto_path='../data/gigagenieRPC.proto';
 
 function initMic(){
@@ -20,8 +19,8 @@ function initMic(){
 };
 let writeFlag=0;
 
-//aikit.initialize(client_id,client_key,client_secret,cert_path,proto_path);
-aikit.initializeJson(json_path,cert_path,proto_path);
+//aikit.initialize(client_id,client_key,client_secret,proto_path);
+aikit.initializeJson(json_path,proto_path);
 const ktstt=aikit.getVoice2Text();
 ktstt.on('error',(error)=>{
     console.log('Error:'+error);
