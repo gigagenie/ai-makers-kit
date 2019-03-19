@@ -48,6 +48,7 @@ shared library와 Python extension이 필요합니다.
     # ktkws.detect() return value가 1이면 detect
    
 &nbsp;&nbsp; ex2-6) 음성인식/대화/음성합성 API 이용(code 참조)
+ * gRPC 서비스 정의 : [../data/gigagenieRPC.proto](https://github.com/gigagenie/ai-makers-kit/blob/master/data/gigagenieRPC.proto)
  * API
     * getVoice2Text         : 음성인식(Speech-to-text)
     * getText2VoiceUrl      : 음성합성(Text-to-speech) wave file url로 전달
