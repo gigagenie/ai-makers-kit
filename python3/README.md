@@ -1,6 +1,6 @@
 GiGA Genie AI Makers Kit을 이용하기 위한 Python 3버전 소스 코드입니다.
 
-## Prerequisites
+# Prerequisites
 Python 3.x를 지원하며 아래 Python 라이브러리 추가 설치가 필요합니다.
 
 * gRPC
@@ -12,7 +12,7 @@ shared library와 Python extension이 필요합니다.
 * [libkwscmdapi.so (Raspberry Pi용)](https://github.com/gigagenie/ai-makers-kit/blob/master/lib/libkwscmdapi.so)
 * [ktkws Python extension module](https://github.com/gigagenie/ai-makers-kit/tree/master/python/install)
 
-## Quick Start
+# Quick Start
 1) 사용자 인증정보 받기
 AI Makers Kit 이용을 위해서는 [KT APILINK 사이트](https://apilink.kt.co.kr)에서 개발자 등록 후
 인증정보(clientid, client key, clientsecret)를 먼저 발급 받아야 합니다.
@@ -35,7 +35,7 @@ AI Makers Kit 이용을 위해서는 [KT APILINK 사이트](https://apilink.kt.c
 4) 예제 실행(ex1 ~ ex9)
 $ python3 ex1_kwstest.py
     
-## Usage
+# Usage
 
 ## 기본이 되는 단위 기능별 사용 예제
 
