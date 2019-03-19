@@ -14,8 +14,8 @@ shared library와 Python extension이 필요합니다.
 
 # 2. Quick Start
 ### a) 사용자 인증정보 받기
- AI Makers Kit 이용을 위해서는 [KT APILINK 사이트](https://apilink.kt.co.kr)에서 개발자 등록 후  
-인증정보(clientid, client key, clientsecret)를 먼저 발급 받아야 합니다.  
+&nbsp;&nbsp;AI Makers Kit 이용을 위해서는 [KT APILINK 사이트](https://apilink.kt.co.kr)에서 개발자 등록 후  
+&nbsp;&nbsp;인증정보(clientid, client key, clientsecret)를 먼저 발급 받아야 합니다.  
   
 ### b) Python3 버전 추가 라이브러리 설치  
    $ sudo easy_install3 pip  
