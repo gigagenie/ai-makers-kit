@@ -36,7 +36,7 @@ shared library와 Python extension이 필요합니다.
   
 # 3. Usage
 
-## 기본이 되는 단위 기능별 사용 예제
+### 기본이 되는 단위 기능별 사용 예제
 
 음성 호출(Keyword Spotting) 이용(ex1 exmaple code 참조)
 
@@ -58,14 +58,14 @@ shared library와 Python extension이 필요합니다.
     * queryByText           : Text에 대한 대화해석 결과([기가지니 Dialog Kit](https://github.com/gigagenieDmt/DialogKit-deploymentGuide/wiki) 참조)
     * queryByVoice          : STT한 결과에 대한 대화해석 결과([기가지니 Dialog Kit](https://github.com/gigagenieDmt/DialogKit-deploymentGuide/wiki) 참조)
  
-## gkit을 이용한 예제
+### gkit을 이용한 예제
 
 * sample_keyword.py : 음성호출을 이용한 음성인식/음성합성 이용 예제
 * sample_button.py : 버튼을 이용한 음성인식/음성합성 이용 예제
 * sample_led.py : 다양한 애니메이션 효과를 준 LED 이용 예제
 * main_demo.py : 음성호출/버튼을 함계 이용한 음성인식/음성합성 이용 예제(LED 사용 포함)
 
-### sample_keyword.py
+#### sample_keyword.py
 
     # gkit 모듈 준비
     import gkit
@@ -78,7 +78,7 @@ shared library와 Python extension이 필요합니다.
     if gkit.kws_detect() == 1:
         print ('detected')
 
-### sample_button.py
+#### sample_button.py
 
     import gkit
     
@@ -89,7 +89,7 @@ shared library와 Python extension이 필요합니다.
     # 버튼 생성 후 callback 등록
     gkit.get_button().on_press(callback)
 
-### sample_led.py
+#### sample_led.py
 
     import gkit
     
@@ -111,7 +111,7 @@ shared library와 Python extension이 필요합니다.
         gkit.LED.PULSE_QUICK
     """
 
-### main_demo.py
+#### main_demo.py
 
     import gkit
     
@@ -131,4 +131,4 @@ shared library와 Python extension이 필요합니다.
     except:
         detector.terminate()
 
-### Enjoy with AI Makers Kit !
+## Enjoy with AI Makers Kit !
