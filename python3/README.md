@@ -18,11 +18,11 @@ AI Makers Kit 이용을 위해서는 [KT APILINK 사이트](https://apilink.kt.c
 인증정보(clientid, client key, clientsecret)를 먼저 발급 받아야 합니다.
 
 2) Python3 버전 추가 라이브러리 설치
-$ sudo easy_install3 pip 
-$ sudo easy_install3 install/ktkws-1.0.1-py3.5-linux-armv7l.egg
-$ sudo apt install portaudio19-dev 
-$ sudo pip3 install grpcio grpcio-tools
-$ sudo pip3 install pyaudio
+        $ sudo easy_install3 pip 
+        $ sudo easy_install3 install/ktkws-1.0.1-py3.5-linux-armv7l.egg
+        $ sudo apt install portaudio19-dev 
+        $ sudo pip3 install grpcio grpcio-tools
+        $ sudo pip3 install pyaudio
 
 3) 사용자 인증 정보 입력
 [user_auth.py 파일에 인증정보 입력]
