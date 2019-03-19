@@ -1,8 +1,8 @@
-GiGA Genie AI Makers Kit을 이용하기 위한 Python 소스 코드입니다.
+GiGA Genie AI Makers Kit을 이용하기 위한 Python 3버전 소스 코드입니다.
 
 # Prerequisites
 
-Python 2.x, 3.x를 지원하며 아래 Python 라이브러리 추가 설치가 필요합니다.
+Python 3.x를 지원하며 아래 Python 라이브러리 추가 설치가 필요합니다.
 
 * gRPC
 * PyAudio
@@ -18,7 +18,7 @@ shared library와 Python extension이 필요합니다.
 AI Makers Kit 이용을 위해서는 [기가지니 개발자 포털](https://gigagenie.ai)에서 개발자 등록 후
 client key를 먼저 발급 받아야 합니다.
 
-INSTALL ...
+INSTALL 명령어
 
     $ sudo apt-get install libasound-dev
     $ sudo apt-get install libportaudio0 libportaudio2 libportaudiocpp0 portaudio19-dev
@@ -29,9 +29,9 @@ INSTALL ...
     $ sudo /sbin/ldconfig -v
     $ sudo python -m easy_install ./install/ktkws-1.0.1-py2.7-linux-armv7l.egg
 
-SET YOUR CLIENT KEY INFORMATION,
+SET YOUR CLIENT KEY INFORMATION
 
-    $ vi gkit.config
+    $ vi user_auth.py
     
 아래 정보를 기가지니 포털에서 발급 받은 클라이언트 키 정보로 업데이트 하세요.
         
