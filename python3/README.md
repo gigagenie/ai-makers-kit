@@ -14,7 +14,7 @@ shared library와 Python extension이 필요합니다.
 
 # 2. Quick Start
 > a) 사용자 인증정보 받기
-AI Makers Kit 이용을 위해서는 [KT APILINK 사이트](https://apilink.kt.co.kr)에서 개발자 등록 후  
+> AI Makers Kit 이용을 위해서는 [KT APILINK 사이트](https://apilink.kt.co.kr)에서 개발자 등록 후  
 인증정보(clientid, client key, clientsecret)를 먼저 발급 받아야 합니다.  
 
 > b) Python3 버전 추가 라이브러리 설치  
@@ -24,17 +24,16 @@ AI Makers Kit 이용을 위해서는 [KT APILINK 사이트](https://apilink.kt.c
    $ sudo pip3 install grpcio grpcio-tools  
    $ sudo pip3 install pyaudio  
   
-> c) 사용자 인증 정보 입력
-[user_auth.py 파일에 인증정보 입력]
-아래 정보를 기가지니 포털에서 발급 받은 클라이언트 키 정보로 업데이트 하세요.
-        
->    [client]
-    clientid: YOUR_CLIENT_ID
-    clientkey: YOUR_CLIENT_KEY
-    clientsecret: YOUR_CLIENT_SECRET
-> d) 예제 실행(ex1 ~ ex9)
-$ python3 ex1_kwstest.py
-    
+> c) 사용자 인증 정보 입력  
+[user_auth.py 파일에 인증정보 입력]  
+아래 정보를 기가지니 포털에서 발급 받은 클라이언트 키 정보로 업데이트 하세요.  
+>    [client]  
+    clientid: YOUR_CLIENT_ID  
+    clientkey: YOUR_CLIENT_KEY  
+    clientsecret: YOUR_CLIENT_SECRET  
+> d) 예제 실행(ex1 ~ ex9)  
+$ python3 ex1_kwstest.py  
+  
 # 3. Usage
 
 ## 기본이 되는 단위 기능별 사용 예제
