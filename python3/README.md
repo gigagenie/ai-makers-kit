@@ -37,7 +37,7 @@ shared library와 Python extension이 필요합니다.
 # 3. Usage
 
 ### a) 기본이 되는 단위 기능별 사용 예제  
-ex1)음성 호출(Keyword Spotting) 이용(code 참조)
+ex1) 음성 호출(Keyword Spotting) 이용(code 참조)
 
     import ktkws
     
@@ -47,15 +47,15 @@ ex1)음성 호출(Keyword Spotting) 이용(code 참조)
     ktkws.detect(AUDIOSTERAM)  # AUDIOSTREAM: PCM 16000Hz, mono, LINEAR16 LE
     # ktkws.detect() return value가 1이면 detect
  
- ex2~6)음성인식/대화/음성합성 API 이용(code 참조)
- 
- * gRPC 서비스 정의 : [../data/gigagenieRPC.proto](https://github.com/gigagenie/ai-makers-kit/blob/master/data/gigagenieRPC.proto)
+ ex2-6) 음성인식/대화/음성합성 API 이용(code 참조)
  * API
     * getVoice2Text         : 음성인식(Speech-to-text)
     * getText2VoiceUrl      : 음성합성(Text-to-speech) wave file url로 전달
     * getText2VoiceStream   : 음성합성(TTS)을 stream data로 전달
     * queryByText           : Text에 대한 대화해석 결과([기가지니 Dialog Kit](https://github.com/gigagenieDmt/DialogKit-deploymentGuide/wiki) 참조)
     * queryByVoice          : STT한 결과에 대한 대화해석 결과([기가지니 Dialog Kit](https://github.com/gigagenieDmt/DialogKit-deploymentGuide/wiki) 참조)
+     
+ ex7-9) 복합 예제(음성/대화/TTS/Button)
  
 ### b) gkit을 이용한 예제
 
