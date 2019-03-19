@@ -1,7 +1,6 @@
 GiGA Genie AI Makers Kit을 이용하기 위한 Python 3버전 소스 코드입니다.
 
-# Prerequisites
-
+## Prerequisites
 Python 3.x를 지원하며 아래 Python 라이브러리 추가 설치가 필요합니다.
 
 * gRPC
@@ -13,38 +12,30 @@ shared library와 Python extension이 필요합니다.
 * [libkwscmdapi.so (Raspberry Pi용)](https://github.com/gigagenie/ai-makers-kit/blob/master/lib/libkwscmdapi.so)
 * [ktkws Python extension module](https://github.com/gigagenie/ai-makers-kit/tree/master/python/install)
 
-# Quick Start
+## Quick Start
+1) 사용자 인증정보 받기
+AI Makers Kit 이용을 위해서는 [KT APILINK 사이트](https://apilink.kt.co.kr)에서 개발자 등록 후
+인증정보(clientid, client key, clientsecret)를 먼저 발급 받아야 합니다.
 
-AI Makers Kit 이용을 위해서는 [기가지니 개발자 포털](https://gigagenie.ai)에서 개발자 등록 후
-client key를 먼저 발급 받아야 합니다.
+2) Python3 버전 추가 라이브러리 설치
+$ sudo easy_install3 pip 
+$ sudo easy_install3 install/ktkws-1.0.1-py3.5-linux-armv7l.egg
+$ sudo apt install portaudio19-dev 
+$ sudo pip3 install grpcio grpcio-tools
+$ sudo pip3 install pyaudio
 
-INSTALL 명령어
-
-    $ sudo apt-get install libasound-dev
-    $ sudo apt-get install libportaudio0 libportaudio2 libportaudiocpp0 portaudio19-dev
-    $ sudo apt-get install python-pip
-    $ sudo pip install pyaudio
-    $ sudo pip install grpcio grpcio-tools
-    $ sudo cp ../lib/libkwscmdapi.so /usr/local/bin/
-    $ sudo /sbin/ldconfig -v
-    $ sudo python -m easy_install ./install/ktkws-1.0.1-py2.7-linux-armv7l.egg
-
-SET YOUR CLIENT KEY INFORMATION
-
-    $ vi user_auth.py
-    
+3) 사용자 인증 정보 입력
+[user_auth.py 파일에 인증정보 입력]
 아래 정보를 기가지니 포털에서 발급 받은 클라이언트 키 정보로 업데이트 하세요.
         
     [client]
     clientid: YOUR_CLIENT_ID
     clientkey: YOUR_CLIENT_KEY
     clientsecret: YOUR_CLIENT_SECRET
-
-and RUN !!!
-
-    $ python main_demo.py
+4) 예제 실행(ex1 ~ ex9)
+$ python3 ex1_kwstest.py
     
-# Usage
+## Usage
 
 ## 기본이 되는 단위 기능별 사용 예제
 
