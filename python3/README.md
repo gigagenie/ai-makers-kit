@@ -26,11 +26,11 @@ shared library와 Python extension이 필요합니다.
   
 ### c) 사용자 인증 정보 입력  
 &nbsp;&nbsp;&nbsp;[user_auth.py 파일에 인증정보 입력]  
-&nbsp;&nbsp;&nbsp;아래 정보를 기가지니 포털에서 발급 받은 클라이언트 키 정보로 업데이트 하세요.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;아래 정보를 기가지니 포털에서 발급 받은 클라이언트 키 정보로 업데이트 하세요.  
    &nbsp;&nbsp;&nbsp;[client]  
-    &nbsp;&nbsp;&nbsp;clientid: YOUR_CLIENT_ID  
-    &nbsp;&nbsp;&nbsp;clientkey: YOUR_CLIENT_KEY  
-    &nbsp;&nbsp;&nbsp;clientsecret: YOUR_CLIENT_SECRET  
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clientid: YOUR_CLIENT_ID  
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clientkey: YOUR_CLIENT_KEY  
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clientsecret: YOUR_CLIENT_SECRET  
 ### d) 예제 실행(ex1 ~ ex9)  
 &nbsp;&nbsp;&nbsp;$ python3 ex1_kwstest.py  
   
