@@ -36,9 +36,8 @@ shared library와 Python extension이 필요합니다.
   
 # 3. Usage
 
-### 기본이 되는 단위 기능별 사용 예제
-
-음성 호출(Keyword Spotting) 이용(ex1 exmaple code 참조)
+### a) 기본이 되는 단위 기능별 사용 예제  
+ex1)음성 호출(Keyword Spotting) 이용(code 참조)
 
     import ktkws
     
@@ -48,7 +47,7 @@ shared library와 Python extension이 필요합니다.
     ktkws.detect(AUDIOSTERAM)  # AUDIOSTREAM: PCM 16000Hz, mono, LINEAR16 LE
     # ktkws.detect() return value가 1이면 detect
  
- 음성인식/대화/음성합성 API 이용(ex2~6 example code 참조)
+ ex2~6)음성인식/대화/음성합성 API 이용(code 참조)
  
  * gRPC 서비스 정의 : [../data/gigagenieRPC.proto](https://github.com/gigagenie/ai-makers-kit/blob/master/data/gigagenieRPC.proto)
  * API
@@ -58,7 +57,7 @@ shared library와 Python extension이 필요합니다.
     * queryByText           : Text에 대한 대화해석 결과([기가지니 Dialog Kit](https://github.com/gigagenieDmt/DialogKit-deploymentGuide/wiki) 참조)
     * queryByVoice          : STT한 결과에 대한 대화해석 결과([기가지니 Dialog Kit](https://github.com/gigagenieDmt/DialogKit-deploymentGuide/wiki) 참조)
  
-### gkit을 이용한 예제
+### b) gkit을 이용한 예제
 
 * sample_keyword.py : 음성호출을 이용한 음성인식/음성합성 이용 예제
 * sample_button.py : 버튼을 이용한 음성인식/음성합성 이용 예제
