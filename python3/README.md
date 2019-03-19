@@ -56,6 +56,9 @@ shared library와 Python extension이 필요합니다.
     * queryByVoice          : STT한 결과에 대한 대화해석 결과([기가지니 Dialog Kit](https://github.com/gigagenieDmt/DialogKit-deploymentGuide/wiki) 참조)
      
  &nbsp;&nbsp;ex7-9) 복합 예제(음성/대화/TTS/Button)
+ &nbsp;&nbsp;기타) 기능파일
+ * user_auth.py         : 사용자 인증 구현
+ * MicrophoneStream.py  : 마이크 스트림 구현
  
 ### b) gkit을 이용한 예제
 
