@@ -1,0 +1,89 @@
+syntax="proto3";
+package kt.gigagenie.ai.speech;
+
+service Gigagenie {
+        rpc getVoice2Text(stream reqVoice) returns (stream resText){}
+	rpc getText2VoiceUrl(reqText) returns (resUrl){}
+	rpc getText2VoiceStream(reqText) returns (stream resVoice){}
+	rpc queryByText(reqQueryText) returns (resQueryText){}
+	rpc queryByVoice(stream reqQueryVoice) returns (resQueryText){}
+}
+
+message reqVoice{
+	oneof streamingRequest{
+		reqVoiceOpt reqOptions=1;
+		bytes audioContent=2;
+	}
+}
+message reqVoiceOpt{
+	int32 mode=1;
+	int32 lang=2;
+}
+message resText{
+	int32 resultCd=1;
+	string recognizedText=2;
+}
+
+message reqText{
+	int32 lang=1;
+	int32 mode=2;
+	string text=3;
+}
+
+message resUrl{
+	int32 resultCd=1;
+	string url=2;
+}
+
+message resVoice{
+	oneof streamingResponse{
+		resVoiceResult resOptions=1;
+		bytes audioContent=2;
+	}
+}
+
+message resVoiceResult{
+	int32 resultCd=1;
+	string format=2;
+}
+
+message reqQueryText{
+	string queryText=1;
+	string userSession=2;
+	string deviceId=3;
+}
+
+message resQueryText{
+	int32 resultCd=1;
+	string uword=2;
+	string sysAct=3;
+	string nAct=4;
+	string sPattern=5;
+	repeated dssAction action=6;
+}
+message dssAction{
+	string mesg=1;
+	string aFeel=2;
+	string submesg=3;
+	string actGroup=4;
+	string actType=5;
+	string srchWord=6;
+	string serviceId=7;
+}
+message reqQueryVoice{
+	oneof streamingRequest{
+		reqQueryVoiceOpt reqOptions=1;
+		bytes audioContent=2;
+	}
+}
+message reqQueryVoiceOpt{
+	int32 lang=1;
+	string userSession=2;
+	string deviceId=3;
+}
+message resQueryByVoice{
+	int32  resultCd=1;
+	string intent=2;
+	string parameters=3;
+	string recognizedText=4;
+}
