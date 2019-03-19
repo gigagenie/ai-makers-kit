@@ -46,19 +46,19 @@ shared library와 Python extension이 필요합니다.
     ktkws.set_keyword(KWSID)   # 0: 기가지니, 1: 지니야(default), 2: 친구야, 3: 자기야
     ktkws.detect(AUDIOSTERAM)  # AUDIOSTREAM: PCM 16000Hz, mono, LINEAR16 LE
     # ktkws.detect() return value가 1이면 detect
- 
+   
 &nbsp;&nbsp; ex2-6) 음성인식/대화/음성합성 API 이용(code 참조)
  * API
     * getVoice2Text         : 음성인식(Speech-to-text)
     * getText2VoiceUrl      : 음성합성(Text-to-speech) wave file url로 전달
     * getText2VoiceStream   : 음성합성(TTS)을 stream data로 전달
     * queryByText           : Text에 대한 대화해석 결과([기가지니 Dialog Kit](https://github.com/gigagenieDmt/DialogKit-deploymentGuide/wiki) 참조)
-    * queryByVoice          : STT한 결과에 대한 대화해석 결과([기가지니 Dialog Kit](https://github.com/gigagenieDmt/DialogKit-deploymentGuide/wiki) 참조)
-     
- &nbsp;&nbsp;ex7-9) 복합 예제(음성/대화/TTS/Button)
- &nbsp;&nbsp;기타) 기능파일
- * user_auth.py         : 사용자 인증 구현
- * MicrophoneStream.py  : 마이크 스트림 구현
+    * queryByVoice          : STT한 결과에 대한 대화해석 결과([기가지니 Dialog Kit](https://github.com/gigagenieDmt/DialogKit-deploymentGuide/wiki) 참조)  
+    
+ &nbsp;&nbsp;ex7-9) 복합 예제(음성/대화/TTS/Button)  
+ &nbsp;&nbsp;기타) 기능파일  
+ * user_auth.py         : 사용자 인증 구현  
+ * MicrophoneStream.py  : 마이크 스트림 구현  
  
 ### b) gkit을 이용한 예제
 
