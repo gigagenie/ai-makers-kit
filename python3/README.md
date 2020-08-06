@@ -135,4 +135,4 @@ shared library와 Python extension이 필요합니다.
     except:
         detector.terminate()
 
-## Enjoy with AI Makers Kit !
+## Enjoy with KT AI Coding Pack !
