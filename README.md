@@ -1,4 +1,4 @@
-# KT AI Coding Pack(구 - AI Makers Kit)
+# KT AI Coding Pack (구 - AI Makers Kit)
 
 KT AI Coding Pack을 이용하는 개발자들을 위한 SDK를 제공합니다.
 Raspberry Pi3 B+에서 동작하며 Python3 프로그래밍 언어로 제공됩니다.
