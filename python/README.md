@@ -1,4 +1,4 @@
-GiGA Genie AI Makers Kit을 이용하기 위한 Python 소스 코드입니다.
+KT AI Coding Pack을 이용하기 위한 Python 소스 코드입니다.
 
 # Prerequisites
 
@@ -7,7 +7,7 @@ Python 2.x, 3.x를 지원하며 아래 Python 라이브러리 추가 설치가 �
 * gRPC
 * PyAudio
 
-GiGA Genie 음성호출어('기가지니', '지니야' 등) 이용을 위해 GiGA Genie에서 제공하는
+KT AI Coding Pack 음성호출어('기가지니', '지니야' 등) 이용을 위해 GiGA Genie에서 제공하는
 shared library와 Python extension이 필요합니다.
 
 * [libkwscmdapi.so (Raspberry Pi용)](https://github.com/gigagenie/ai-makers-kit/blob/master/lib/libkwscmdapi.so)
@@ -15,7 +15,7 @@ shared library와 Python extension이 필요합니다.
 
 # Quick Start
 
-AI Makers Kit 이용을 위해서는 [기가지니 개발자 포털](https://gigagenie.ai)에서 개발자 등록 후
+KT AI Coding Pack 이용을 위해서는 [KT APILINK](https://apilink.kt.co.kr/)에서 개발자 등록 후
 client key를 먼저 발급 받아야 합니다.
 
 INSTALL ...
@@ -141,4 +141,4 @@ and RUN !!!
     except:
         detector.terminate()
 
-### Enjoy with AI Makers Kit !
+### Enjoy with KT AI Coding Pack !
