@@ -1,4 +1,4 @@
-GiGA Genie AI Makers Kit을 이용하기 위한 Python 3버전 소스 코드입니다.
+KT AI Coding Pack을 이용하기 위한 Python 3버전 소스 코드입니다.
 
 # 1. Prerequisites
 Python 3.x를 지원하며 아래 Python 라이브러리 추가 설치가 필요합니다.
