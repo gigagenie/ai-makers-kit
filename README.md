@@ -1,16 +1,16 @@
-# GiGA Genie AI Makers Kit
+# KT AI Coding Pack(구 - AI Makers Kit)
 
-GiGA Genie AI Makers Kit을 이용하는 개발자들을 위한 SDK를 제공합니다.
-Raspberry Pi에서 동작하며 Node.js, Python 등 프로그래밍 언어별로 제공됩니다.
+KT AI Coding Pack을 이용하는 개발자들을 위한 SDK를 제공합니다.
+Raspberry Pi3 B+에서 동작하며 Python3 프로그래밍 언어로 제공됩니다.
 
-GiGA Genie에서 제공하는 AI Makers Kit은 H/W(Raspberry Pi + Mic/Spk Kit)와 S/W로
-구성되어 있으며, AI Makers Kit S/W는 이곳에서 공식 배포가 됩니다.
-추가되는 기능과 개선된 AI Makers Kit S/W는 이곳에서 확인하세요!
+GiGA Genie에서 제공하는 KT AI Coding Pack은 H/W(Raspberry Pi + Mic/Spk Kit)와 S/W로
+구성되어 있으며, KT AI Coding Pack S/W는 이곳에서 공식 배포가 됩니다.
+추가되는 기능과 개선된 KT AI Coding Pack S/W는 이곳에서 확인하세요!
 
 ### Directory
 
     data/       : KWS model data, Sound data, etc.
-    driver/     : AI Makers Kit Drivers Package(audio/mic)
+    driver/     : KT AI Coding Pack Drivers Package(audio/mic)
     lib/        : GiGA Genie KWS shared library for Raspberry Pi
     nodejs/     : Node.js support
     python/     : Python support
